@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrfz.dao.IHeroInfoMapper">
+    <resultMap id="BaseResultMap" type="com.mrfz.bean.HeroBaseInfoBean">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl"/>
+        <result column="stars" jdbcType="INTEGER" property="stars"/>
+        <result column="job" jdbcType="VARCHAR" property="job"/>
+        <result column="sex" jdbcType="BIT" property="sex"/>
+        <result column="place" jdbcType="VARCHAR" property="place"/>
+        <result column="tag" jdbcType="VARCHAR" property="tag"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime
+    </sql>
+    <select id="selectAllHero" resultType="com.mrfz.bean.HeroBaseInfoBean" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from hero_base_info
+    </select>
+
+</mapper>

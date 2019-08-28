@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mrfz-ui:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/mrfz_ui_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="mrfz-ui/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mrfz-ui" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
