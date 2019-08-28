@@ -8,7 +8,7 @@ public class HeroBaseInfoBean {
     private String avatarUrl;
     private Integer stars;
     private String job;
-    private boolean sex;
+    private Integer sex;
     private String place;
     private String tag;
     private Date createTime;
@@ -54,11 +54,11 @@ public class HeroBaseInfoBean {
         this.job = job;
     }
 
-    public boolean isSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 

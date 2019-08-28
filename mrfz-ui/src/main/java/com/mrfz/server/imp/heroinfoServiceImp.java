@@ -18,4 +18,9 @@ public class heroinfoServiceImp implements IHeroinfoService {
 
         return iHeroinfoBll.getAllHero();
     }
+
+    @Override
+    public List<HeroBaseInfoBean> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean) {
+        return iHeroinfoBll.getInfoByTj(heroBaseInfoBean);
+    }
 }

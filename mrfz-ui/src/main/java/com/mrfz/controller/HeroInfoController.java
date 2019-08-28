@@ -21,17 +21,40 @@ public class HeroInfoController {
     private IHeroinfoService iHeroinfoService;
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    public ResponseEntity<Object> getAllHero(){
+    public ResponseEntity<Object> getAllHero() {
 
-        List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getAllHero();
-        if(heroBaseInfoBeanList !=null && heroBaseInfoBeanList.size()>0 ){
-            return new ResponseEntity<>(new ResultBean<>(true, "查询成功", heroBaseInfoBeanList),
-                    HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(new ResultBean<>(false, "未查询到数据", null),
+        try {
+            List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getAllHero();
+            if (heroBaseInfoBeanList != null && heroBaseInfoBeanList.size() > 0) {
+                return new ResponseEntity<>(new ResultBean<>(true, "查询成功", heroBaseInfoBeanList),
+                        HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(new ResultBean<>(false, "未查询到数据", null),
+                        HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ResultBean<>(false, "系统异常" + e.getMessage(), null),
                     HttpStatus.OK);
         }
 
     }
 
+    @RequestMapping(value = "/getInfoBy", method = RequestMethod.GET)
+    public ResponseEntity<Object> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean) {
+
+        try {
+            List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getInfoByTj(heroBaseInfoBean);
+            if (heroBaseInfoBeanList != null && heroBaseInfoBeanList.size() > 0) {
+                return new ResponseEntity<>(new ResultBean<>(true, "查询成功", heroBaseInfoBeanList),
+                        HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(new ResultBean<>(false, "未查询到数据", null),
+                        HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ResultBean<>(false, "系统异常" + e.getMessage(), null),
+                    HttpStatus.OK);
+        }
+
+    }
 }

@@ -20,4 +20,25 @@
         select <include refid="Base_Column_List" /> from hero_base_info
     </select>
 
+    <select id="selectInfoByTj" parameterType="com.mrfz.bean.HeroBaseInfoBean"  resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from hero_base_info where 1=1
+        <if test="id != null">
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            and name =  #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="stars != null">
+            and stars = #{stars,jdbcType=VARCHAR}
+        </if>
+        <if test="job != null">
+            and job =  #{job,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+            and sex =  #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="place != null">
+            and place =  #{place,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IHeroinfoService {
     List<HeroBaseInfoBean> getAllHero();
+
+    List<HeroBaseInfoBean> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean);
 }

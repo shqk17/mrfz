@@ -17,4 +17,9 @@ public class HeroinfoBllImp implements IHeroinfoBll {
     public List<HeroBaseInfoBean> getAllHero() {
         return iHeroInfoMapper.selectAllHero();
     }
+
+    @Override
+    public List<HeroBaseInfoBean> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean) {
+        return iHeroInfoMapper.selectInfoByTj(heroBaseInfoBean);
+    }
 }

@@ -2,6 +2,7 @@ package com.mrfz.dao;
 
 import com.mrfz.bean.HeroBaseInfoBean;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,4 +11,7 @@ import java.util.List;
 public interface IHeroInfoMapper {
 
     List<HeroBaseInfoBean> selectAllHero();
+
+
+    List<HeroBaseInfoBean> selectInfoByTj(HeroBaseInfoBean heroBaseInfoBean);
 }
