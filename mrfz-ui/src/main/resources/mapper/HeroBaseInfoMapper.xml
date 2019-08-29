@@ -6,6 +6,7 @@
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl"/>
         <result column="stars" jdbcType="INTEGER" property="stars"/>
+        <result column="seniority" jdbcType="INTEGER" property="seniority"/>
         <result column="job" jdbcType="VARCHAR" property="job"/>
         <result column="sex" jdbcType="BIT" property="sex"/>
         <result column="place" jdbcType="VARCHAR" property="place"/>
@@ -14,7 +15,7 @@
         <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime
+    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime,seniority
     </sql>
     <select id="selectAllHero" resultType="com.mrfz.bean.HeroBaseInfoBean" resultMap="BaseResultMap">
         select <include refid="Base_Column_List" /> from hero_base_info
@@ -30,6 +31,12 @@
         </if>
         <if test="stars != null">
             and stars = #{stars,jdbcType=VARCHAR}
+        </if>
+        <if test="seniorityNum != null">
+            and seniorityNum = #{seniorityNum,jdbcType=VARCHAR}
+        </if>
+        <if test="seniority != null">
+            and seniority = #{seniority,jdbcType=VARCHAR}
         </if>
         <if test="job != null">
             and job =  #{job,jdbcType=VARCHAR}
