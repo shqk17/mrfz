@@ -14,8 +14,12 @@ public class HeroinfoBllImp implements IHeroinfoBll {
     private IHeroInfoMapper iHeroInfoMapper;
 
     @Override
-    public List<HeroBaseInfoBean> getAllHero() {
-        return iHeroInfoMapper.selectAllHero();
+    public List<HeroBaseInfoBean> getAllHero(Integer starsOrder) {
+        String orderStr = " order by stars desc";
+        if(starsOrder == 0){
+            orderStr = " order by stars ";
+        }
+        return iHeroInfoMapper.selectAllHero(orderStr);
     }
 
     @Override

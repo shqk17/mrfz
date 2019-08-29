@@ -21,10 +21,13 @@ public class HeroInfoController {
     private IHeroinfoService iHeroinfoService;
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    public ResponseEntity<Object> getAllHero() {
+    public ResponseEntity<Object> getAllHero(Integer starsOrder, Integer seniorityOrder) {
 
         try {
-            List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getAllHero();
+            if (starsOrder == null) {
+                starsOrder = 1;
+            }
+            List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getAllHero(starsOrder);
             if (heroBaseInfoBeanList != null && heroBaseInfoBeanList.size() > 0) {
                 return new ResponseEntity<>(new ResultBean<>(true, "查询成功", heroBaseInfoBeanList),
                         HttpStatus.OK);

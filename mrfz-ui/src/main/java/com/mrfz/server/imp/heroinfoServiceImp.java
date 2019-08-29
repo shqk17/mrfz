@@ -2,7 +2,6 @@ package com.mrfz.server.imp;
 
 import com.mrfz.bean.HeroBaseInfoBean;
 import com.mrfz.bll.IHeroinfoBll;
-import com.mrfz.dao.IHeroInfoMapper;
 import com.mrfz.server.IHeroinfoService;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,9 @@ public class heroinfoServiceImp implements IHeroinfoService {
     @Resource
     private IHeroinfoBll iHeroinfoBll;
     @Override
-    public List<HeroBaseInfoBean> getAllHero() {
+    public List<HeroBaseInfoBean> getAllHero(Integer starsOrder) {
 
-        return iHeroinfoBll.getAllHero();
+        return iHeroinfoBll.getAllHero(starsOrder);
     }
 
     @Override

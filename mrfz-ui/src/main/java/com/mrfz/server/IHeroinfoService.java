@@ -5,7 +5,7 @@ import com.mrfz.bean.HeroBaseInfoBean;
 import java.util.List;
 
 public interface IHeroinfoService {
-    List<HeroBaseInfoBean> getAllHero();
+    List<HeroBaseInfoBean> getAllHero(Integer starsOrder);
 
     List<HeroBaseInfoBean> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean);
 }

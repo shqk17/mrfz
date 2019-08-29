@@ -7,6 +7,7 @@
         <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl"/>
         <result column="stars" jdbcType="INTEGER" property="stars"/>
         <result column="seniority" jdbcType="INTEGER" property="seniority"/>
+        <result column="seniorityNum" jdbcType="INTEGER" property="seniorityNum"/>
         <result column="job" jdbcType="VARCHAR" property="job"/>
         <result column="sex" jdbcType="BIT" property="sex"/>
         <result column="place" jdbcType="VARCHAR" property="place"/>
@@ -15,10 +16,10 @@
         <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime,seniority
+    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime,seniority,seniorityNum
     </sql>
-    <select id="selectAllHero" resultType="com.mrfz.bean.HeroBaseInfoBean" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List" /> from hero_base_info
+    <select id="selectAllHero" parameterType="java.lang.String" resultType="com.mrfz.bean.HeroBaseInfoBean" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from hero_base_info  #{orderStr,jdbcType=VARCHAR}
     </select>
 
     <select id="selectInfoByTj" parameterType="com.mrfz.bean.HeroBaseInfoBean"  resultMap="BaseResultMap">
