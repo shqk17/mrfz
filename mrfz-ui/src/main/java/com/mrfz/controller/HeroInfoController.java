@@ -21,7 +21,7 @@ public class HeroInfoController {
     private IHeroinfoService iHeroinfoService;
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    public ResponseEntity<Object> getAllHero(Integer starsOrder, Integer seniorityOrder) {
+    public ResponseEntity<Object> getAllHero(Integer starsOrder) {
 
         try {
             if (starsOrder == null) {
@@ -43,10 +43,17 @@ public class HeroInfoController {
     }
 
     @RequestMapping(value = "/getInfoBy", method = RequestMethod.GET)
-    public ResponseEntity<Object> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean) {
+    public ResponseEntity<Object> getInfoByTj(
+            String stars,String jobs,String sexs,String places,String name,
+            String tags
+            ,Integer starsOrder) {
 
         try {
-            List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getInfoByTj(heroBaseInfoBean);
+            if (starsOrder == null) {
+                starsOrder = 1;
+            }
+            List<HeroBaseInfoBean> heroBaseInfoBeanList = iHeroinfoService.getInfoByTj(
+                    stars,jobs,sexs,places,tags,starsOrder,name);
             if (heroBaseInfoBeanList != null && heroBaseInfoBeanList.size() > 0) {
                 return new ResponseEntity<>(new ResultBean<>(true, "查询成功", heroBaseInfoBeanList),
                         HttpStatus.OK);

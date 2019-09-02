@@ -6,8 +6,8 @@
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl"/>
         <result column="stars" jdbcType="INTEGER" property="stars"/>
-        <result column="seniority" jdbcType="INTEGER" property="seniority"/>
-        <result column="seniorityNum" jdbcType="INTEGER" property="seniorityNum"/>
+<!--        <result column="seniority" jdbcType="INTEGER" property="seniority"/>-->
+<!--        <result column="seniorityNum" jdbcType="INTEGER" property="seniorityNum"/>-->
         <result column="job" jdbcType="VARCHAR" property="job"/>
         <result column="sex" jdbcType="BIT" property="sex"/>
         <result column="place" jdbcType="VARCHAR" property="place"/>
@@ -16,37 +16,20 @@
         <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime,seniority,seniorityNum
+    id,name,avatarUrl,stars,job,sex,place,tag,createTime,updateTime
     </sql>
     <select id="selectAllHero" parameterType="java.lang.String" resultType="com.mrfz.bean.HeroBaseInfoBean" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List" /> from hero_base_info  #{orderStr,jdbcType=VARCHAR}
+        select <include refid="Base_Column_List" /> from hero_base_info  ${orderStr,jdbcType=VARCHAR}
     </select>
 
-    <select id="selectInfoByTj" parameterType="com.mrfz.bean.HeroBaseInfoBean"  resultMap="BaseResultMap">
-        select <include refid="Base_Column_List" /> from hero_base_info where 1=1
-        <if test="id != null">
-            and id = #{id,jdbcType=VARCHAR}
-        </if>
-        <if test="name != null">
-            and name =  #{name,jdbcType=VARCHAR}
-        </if>
-        <if test="stars != null">
-            and stars = #{stars,jdbcType=VARCHAR}
-        </if>
-        <if test="seniorityNum != null">
-            and seniorityNum = #{seniorityNum,jdbcType=VARCHAR}
-        </if>
-        <if test="seniority != null">
-            and seniority = #{seniority,jdbcType=VARCHAR}
-        </if>
-        <if test="job != null">
-            and job =  #{job,jdbcType=VARCHAR}
-        </if>
-        <if test="sex != null">
-            and sex =  #{sex,jdbcType=VARCHAR}
-        </if>
-        <if test="place != null">
-            and place =  #{place,jdbcType=VARCHAR}
-        </if>
+    <select id="selectInfoByTj" parameterType="java.lang.String"  resultMap="BaseResultMap">
+        SELECT
+        t.*
+        FROM
+        (select <include refid="Base_Column_List" /> from hero_base_info where ${sql} )t
+        LEFT JOIN hero_tag_relation_tb b ON t.id = b.heroId
+        WHERE  ${tagsql}
+        GROUP BY t.id
+        HAVING COUNT(DISTINCT t.id, b.tagId) =2 ${orderStr}
     </select>
 </mapper>

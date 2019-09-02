@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface IHeroinfoBll {
 
-    List<HeroBaseInfoBean> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean);
 
     List<HeroBaseInfoBean> getAllHero(Integer starsOrder);
+
+    List<HeroBaseInfoBean> getInfoByTj(String sql, String tagsql, String orderStr);
 }

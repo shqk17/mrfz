@@ -6,9 +6,9 @@ public class HeroBaseInfoBean {
     private String id;
     private String name;
     private String avatarUrl;
-    private String seniority;
+//    private String seniority;
     private Integer stars;
-    private Integer seniorityNum;
+//    private Integer seniorityNum;
     private String job;
     private Integer sex;
     private String place;
@@ -28,21 +28,21 @@ public class HeroBaseInfoBean {
         return avatarUrl;
     }
 
-    public String getSeniority() {
-        return seniority;
-    }
-
-    public void setSeniority(String seniority) {
-        this.seniority = seniority;
-    }
-
-    public Integer getSeniorityNum() {
-        return seniorityNum;
-    }
-
-    public void setSeniorityNum(Integer seniorityNum) {
-        this.seniorityNum = seniorityNum;
-    }
+//    public String getSeniority() {
+//        return seniority;
+//    }
+//
+//    public void setSeniority(String seniority) {
+//        this.seniority = seniority;
+//    }
+//
+//    public Integer getSeniorityNum() {
+//        return seniorityNum;
+//    }
+//
+//    public void setSeniorityNum(Integer seniorityNum) {
+//        this.seniorityNum = seniorityNum;
+//    }
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;

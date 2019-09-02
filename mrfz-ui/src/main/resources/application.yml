@@ -12,6 +12,7 @@ server:
 spring:
   datasource:
       url: jdbc:mysql://127.0.0.1:3306/mrfz_db?useUnicode=true&useSSL=false&characterEncoding=UTF-8&allowMultiQueries=true
+#      url: jdbc:mysql://139.159.205.181:3306/mrfz_db?useUnicode=true&useSSL=false&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
       password: AA123567
       type: com.alibaba.druid.pool.DruidDataSource
@@ -22,6 +23,7 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         #基本属性
         url: jdbc:mysql://127.0.0.1:3306/mrfz_db?useUnicode=true&useSSL=false&characterEncoding=UTF-8&allowMultiQueries=true
+#        url: jdbc:mysql://139.159.205.181:3306/mrfz_db?useUnicode=true&useSSL=false&characterEncoding=UTF-8&allowMultiQueries=true
         username: root
         password: AA123567
         #配置初始化大小/最小/最大

@@ -23,7 +23,7 @@ public class HeroinfoBllImp implements IHeroinfoBll {
     }
 
     @Override
-    public List<HeroBaseInfoBean> getInfoByTj(HeroBaseInfoBean heroBaseInfoBean) {
-        return iHeroInfoMapper.selectInfoByTj(heroBaseInfoBean);
+    public List<HeroBaseInfoBean> getInfoByTj(String sql, String tagsql, String orderStr) {
+        return iHeroInfoMapper.selectInfoByTj(sql,tagsql,orderStr);
     }
 }
