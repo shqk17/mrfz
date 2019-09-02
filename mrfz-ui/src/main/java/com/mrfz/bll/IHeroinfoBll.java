@@ -9,5 +9,5 @@ public interface IHeroinfoBll {
 
     List<HeroBaseInfoBean> getAllHero(Integer starsOrder);
 
-    List<HeroBaseInfoBean> getInfoByTj(String sql, String tagsql, String orderStr);
+    List<HeroBaseInfoBean> getInfoByTj(String sql, String tagsql, String orderStr, int num);
 }

@@ -30,6 +30,6 @@
         LEFT JOIN hero_tag_relation_tb b ON t.id = b.heroId
         WHERE  ${tagsql}
         GROUP BY t.id
-        HAVING COUNT(DISTINCT t.id, b.tagId) =2 ${orderStr}
+        HAVING COUNT(DISTINCT t.id, b.tagId) >=${num} ${orderStr}
     </select>
 </mapper>

@@ -1,6 +1,8 @@
 package com.mrfz.server.imp;
 
 import com.mrfz.bean.HeroBaseInfoBean;
+import com.mrfz.bean.HeroJobEnum;
+import com.mrfz.bean.HeroPlaceEnum;
 import com.mrfz.bll.IHeroinfoBll;
 import com.mrfz.server.IHeroinfoService;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,12 @@ public class heroinfoServiceImp implements IHeroinfoService {
             sql.append(" and name like ('%").append(name).append("%')");
         }
         if(jobs != null && jobs.length()>0){
-            String jobsStr =String.join("','",jobs.split(","));
+            String[] jobIds = jobs.split(",");
+            List<String> jobNames = new ArrayList<>();
+            for(String jobId : jobIds){
+                jobNames.add(HeroJobEnum.getName(jobId));
+            }
+            String jobsStr =String.join("','",jobNames);
             sql.append(" and job in ('").append(jobsStr).append("')");
         }
         if(sexs != null && sexs.length()>0){
@@ -41,15 +48,21 @@ public class heroinfoServiceImp implements IHeroinfoService {
             sql.append(" and sex in ('").append(sexsStr).append("')");
         }
         if(places != null && places.length()>0){
-            String placesStr =String.join("','",places.split(","));
+            String[] placeIds = places.split(",");
+            List<String> placeNames = new ArrayList<>();
+            for(String placeId : placeIds){
+                placeNames.add(HeroPlaceEnum.getName(placeId));
+            }
+            String placesStr =String.join("','",placeNames);
             sql.append(" and place in ('").append(placesStr).append("')");
         }
         StringBuilder tagStrs = new StringBuilder();
         tagStrs.append(" 1=1 ");
+        int num = 0;
+
         if(tags != null && tags.length()>0){
             String[] tagsz = tags.split(",");
             List<String> taglist = new ArrayList<>();
-            int num = 0;
             for (String s :tagsz){
                 if(s!=null&&s.length()>0){
                     num = num+1;
@@ -67,6 +80,6 @@ public class heroinfoServiceImp implements IHeroinfoService {
         }
 
 
-        return iHeroinfoBll.getInfoByTj(sql.toString(),tagStrs.toString(),orderStr);
+        return iHeroinfoBll.getInfoByTj(sql.toString(),tagStrs.toString(),orderStr,num);
     }
 }

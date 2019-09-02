@@ -14,5 +14,5 @@ public interface IHeroInfoMapper {
 
 
     List<HeroBaseInfoBean> selectInfoByTj(String sql,
-                                           String tagsql,String orderStr);
+                                           String tagsql,String orderStr,int num);
 }

@@ -3,7 +3,6 @@ package com.mrfz.bll.imp;
 import com.mrfz.bean.HeroBaseInfoBean;
 import com.mrfz.bll.IHeroinfoBll;
 import com.mrfz.dao.IHeroInfoMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +22,7 @@ public class HeroinfoBllImp implements IHeroinfoBll {
     }
 
     @Override
-    public List<HeroBaseInfoBean> getInfoByTj(String sql, String tagsql, String orderStr) {
-        return iHeroInfoMapper.selectInfoByTj(sql,tagsql,orderStr);
+    public List<HeroBaseInfoBean> getInfoByTj(String sql, String tagsql, String orderStr, int num) {
+        return iHeroInfoMapper.selectInfoByTj(sql,tagsql,orderStr,num);
     }
 }
